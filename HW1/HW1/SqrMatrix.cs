@@ -42,22 +42,80 @@ namespace HW1
             this.n=n;
         }
 
+        private static bool IsPowerOfTwo(ulong x)
+        {
+            return (x != 0) && ((x & (x - 1)) == 0);
+        }
+        private static SqrMatrix completeMatrix(SqrMatrix mat)
+        {
+            int i=mat.N;
+            while (!IsPowerOfTwo((ulong)(i)))
+            {
+                i++;
+            }
 
+            SqrMatrix temp = new SqrMatrix(i);
+
+            for(int j=0;j<i;j++)
+              temp[j,j]=1;
+
+            for(int j=0;j<mat.N;j++)
+              for(int k=0;k<mat.N;k++)
+            {
+                temp[j, k] = mat[j, k];
+            }
+
+            return temp;
+
+        }
 
         static public SqrMatrix inv(SqrMatrix source)
         {
-               SqrMatrix A = new SqrMatrix(source.N-1);
-               SqrMatrix B = new SqrMatrix(source.N-1);
-               SqrMatrix A = new SqrMatrix(source.N-1);
-               SqrMatrix A = new SqrMatrix(source.N-1);
+            if (!IsPowerOfTwo((ulong)source.N))
+            {
+               return inv( completeMatrix(source));
+            }
 
+            SqrMatrix result;
+            if (source.N == 1)
+            {
+                result = new SqrMatrix(1);
+                result[0,0]=source[0,0];
+                return result;
+            }
+               SqrMatrix A = new SqrMatrix(source.N / 2);
+               SqrMatrix B = new SqrMatrix(source.N / 2);
+               SqrMatrix C = new SqrMatrix(source.N / 2);
+               SqrMatrix D = new SqrMatrix(source.N / 2);
+               SqrMatrix iA,iB,iC,iD,invDCAB,invA;
+               for (int i = 0; i < A.N; i++)
+                   for (int j = 0; j < A.N; j++)
+                   {
+                       A[i, j] = source[i, j];
+                       B[i, j] = source[i, j + B.N];
+                       C[i, j] = source[i + C.N, j];
+                       D[i, j] = source[i + D.N, j + D.N];
+                   }
                invA = inv(A);
                invDCAB = inv(D-C*invA*B);   
 
                iA = invA + invA*B*invDCAB*C*invA;
                iB = -invA*B*invDCAB;
                iC = -invDCAB*C*invA;
-               iD = invDCAB
+               iD = invDCAB;
+               result = new SqrMatrix(source.N);
+            for(int i=0;i<A.N;i++)
+                for(int j =0;j<A.N;j++)
+                {
+                    result[i,j]=A[i,j];
+                    result[i, j + B.N] = B[i, j];
+                    result[i + C.N, j] = C[i, j];
+                    result[i + D.N, j + D.N] = D[i, j];
+                }
+
+
+            return result;
+            
         }
 
 
@@ -126,7 +184,8 @@ namespace HW1
         {
             for (int i = 0; i < this.N; i++)
             {
-                for (j = 0; j < this.N; j++)
+                for (int j = 0; j < this.N; j++)
+               
                     Console.Write(this[i, j]+" ");
                 Console.WriteLine("");
             }
