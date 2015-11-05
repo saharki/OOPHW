@@ -8,7 +8,7 @@ namespace HW1
 {
     class SqrMatrix
     {
-        private double [,] matrix ;
+        private double [,] matrix ; 
         private int n;
         public int N
            {
@@ -20,7 +20,7 @@ namespace HW1
             }
 
 
-        public double this[int i,int j]
+        public double this[int i, int j] // overload operators [,]
     {
         get
         {
@@ -42,11 +42,11 @@ namespace HW1
             this.n=n;
         }
 
-        private static bool IsPowerOfTwo(ulong x)
+        private static bool IsPowerOfTwo(ulong x) // check if the number is power of 2
         {
             return (x != 0) && ((x & (x - 1)) == 0);
         }
-        private static SqrMatrix completeMatrix(SqrMatrix mat)
+        private static SqrMatrix completeMatrix(SqrMatrix mat) // complete values to exp of 2
         {
             int i=mat.N;
             while (!IsPowerOfTwo((ulong)(i)))
@@ -69,26 +69,51 @@ namespace HW1
 
         }
 
-        static public SqrMatrix inv(SqrMatrix source)
+        private static SqrMatrix deleteComplete(SqrMatrix mat,int origN) // removing complete to exp of 2
         {
-            if (!IsPowerOfTwo((ulong)source.N))
+       
+
+            SqrMatrix temp = new SqrMatrix(origN);
+
+           
+
+            for (int j = 0; j < origN; j++)
+                for (int k = 0; k < origN; k++)
+                {
+                    temp[j, k] = mat[j, k];
+                }
+
+            return temp;
+
+        }
+
+        static public SqrMatrix inv(SqrMatrix source) // make the invertion
+        {
+            if (!IsPowerOfTwo((ulong)source.N)) // if the dimension is not a pow of 2
             {
-               return inv( completeMatrix(source));
+                SqrMatrix result1;
+               result1= inv( completeMatrix(source));
+               return deleteComplete(result1,source.N);
+
             }
 
+         //   source.print();
+
             SqrMatrix result;
-            if (source.N == 1)
+            if (source.N == 1) // break condition when reaching 1
             {
+                
                 result = new SqrMatrix(1);
-                result[0,0]=source[0,0];
+                result[0,0]=1/source[0,0];
                 return result;
+                
             }
                SqrMatrix A = new SqrMatrix(source.N / 2);
                SqrMatrix B = new SqrMatrix(source.N / 2);
                SqrMatrix C = new SqrMatrix(source.N / 2);
                SqrMatrix D = new SqrMatrix(source.N / 2);
                SqrMatrix iA,iB,iC,iD,invDCAB,invA;
-               for (int i = 0; i < A.N; i++)
+               for (int i = 0; i < A.N; i++) // putting values back to matrixes A,B,C,D
                    for (int j = 0; j < A.N; j++)
                    {
                        A[i, j] = source[i, j];
@@ -96,6 +121,8 @@ namespace HW1
                        C[i, j] = source[i + C.N, j];
                        D[i, j] = source[i + D.N, j + D.N];
                    }
+
+              // according to the formula
                invA = inv(A);
                invDCAB = inv(D-C*invA*B);   
 
@@ -103,14 +130,15 @@ namespace HW1
                iB = -invA*B*invDCAB;
                iC = -invDCAB*C*invA;
                iD = invDCAB;
+
                result = new SqrMatrix(source.N);
-            for(int i=0;i<A.N;i++)
-                for(int j =0;j<A.N;j++)
+            for(int i=0;i<iA.N;i++)   // putting values to a bigger matrix
+                for(int j =0;j<iA.N;j++)
                 {
-                    result[i,j]=A[i,j];
-                    result[i, j + B.N] = B[i, j];
-                    result[i + C.N, j] = C[i, j];
-                    result[i + D.N, j + D.N] = D[i, j];
+                    result[i,j]=iA[i,j];
+                    result[i, j + iB.N] = iB[i, j];
+                    result[i + iC.N, j] = iC[i, j];
+                    result[i + iD.N, j + iD.N] = iD[i, j];
                 }
 
 
@@ -119,7 +147,7 @@ namespace HW1
         }
 
 
-        public static SqrMatrix operator+(SqrMatrix left, SqrMatrix right)
+        public static SqrMatrix operator +(SqrMatrix left, SqrMatrix right) // operator +
         {
 
             if (left.N != right.N)
@@ -134,7 +162,7 @@ namespace HW1
             return c;
         }
 
-        public static SqrMatrix operator -(SqrMatrix left, SqrMatrix right)
+        public static SqrMatrix operator -(SqrMatrix left, SqrMatrix right) // operator -
         {
 
             if (left.N != right.N)
@@ -149,7 +177,7 @@ namespace HW1
             return c;
         }
 
-        public static SqrMatrix operator -(SqrMatrix left)
+        public static SqrMatrix operator -(SqrMatrix left) //unary operator -
         {
             SqrMatrix c = new SqrMatrix(left.N);
 
@@ -160,7 +188,7 @@ namespace HW1
             return c;
         }
 
-        public static SqrMatrix operator *(SqrMatrix left, SqrMatrix right)
+        public static SqrMatrix operator *(SqrMatrix left, SqrMatrix right) //operator *
         {
 
             if (left.N != right.N)
@@ -180,7 +208,7 @@ namespace HW1
             return c;
         }
 
-        public void print()
+        public void print() //printing matrix value
         {
             for (int i = 0; i < this.N; i++)
             {
