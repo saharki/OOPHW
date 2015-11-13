@@ -11,6 +11,9 @@ namespace HW1
 
         public static void Main()
         {
+            SqrMatrix sm1 = new SqrMatrix(6);
+            SqrMatrix sm2 = new SqrMatrix(3);
+
 
             SqrMatrix sm = new SqrMatrix(3);
 
@@ -33,6 +36,7 @@ namespace HW1
             Console.WriteLine("Test Matrix");
             tester = sm * invSm;
             tester.print();
+
 
         } // Main
 
