@@ -25,9 +25,6 @@ namespace HW2
             throw new NotImplementedException();
         }
 
-        internal void printStages()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
