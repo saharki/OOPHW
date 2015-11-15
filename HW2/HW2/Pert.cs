@@ -10,17 +10,12 @@ namespace HW2
         private int n;
         private Arc []arcArr;
         int[] inDegree;
-        int[] stage_list;
-        int[] new_stage_list;
 
         public Pert(int n)
         {
-            // TODO: Complete member initialization
             this.n = n;
             inDegree = new int[n];
             arcArr = new Arc[n];
-            stage_list = new int[n];
-            new_stage_list = new int[n];
         }
         public void prerequisite(int i, int j)
         {
@@ -32,6 +27,9 @@ namespace HW2
         }
         public void printStages()
         {
+            int[] stage_list = new int[n];
+            int[] new_stage_list = new int[n]; 
+
             int flag = 0;
 
             for(int i=0; i<this.n;i++)
@@ -43,27 +41,30 @@ namespace HW2
                     
                 }
             }
-    while(flag==1)
-                
-            for (int i = 0; i < this.n; i++)
+            while (flag == 1)
             {
-                if (stage_list[i] > 0)
+                flag = 0;
+                for (int i = 0; i < this.n; i++)
                 {
-                    Console.Out.Write(i +" ");
-                    while (arcArr[i] != null)
+                    if (stage_list[i] > 0)
                     {
-                        if((--inDegree[arcArr[i].j])==0)
+                        Console.Out.Write(i + " ");
+                        while (arcArr[i] != null)
                         {
-                            new_stage_list[arcArr[i].j]++;
-                        }
+                            if ((--inDegree[arcArr[i].j]) == 0)
+                            {
+                                new_stage_list[arcArr[i].j]++;
+                                flag = 1;
+                            }
 
+                        }
+                        stage_list[i] = 0;
                     }
-                    stage_list[i] = 0;
                 }
+                int[] temp = stage_list;
+                stage_list = new_stage_list;
+                new_stage_list = temp;
             }
-            int[] temp=stage_list;
-            stage_list = new_stage_list;
-            new_stage_list = temp;
         }
     }
 }
