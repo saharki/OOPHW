@@ -11,13 +11,13 @@ namespace HW2
         private Arc []arcArr;
         int[] inDegree;
 
-        public Pert(int n)
+        public Pert(int n) //Constructor
         {
             this.n = n;
             inDegree = new int[n];
             arcArr = new Arc[n];
         }
-        public void prerequisite(int i, int j)
+        public void prerequisite(int i, int j) // i will be the prerequisitie of j
         {
             Arc temp = arcArr[i];
             arcArr[i] = new Arc();
@@ -25,7 +25,7 @@ namespace HW2
             arcArr[i].next = temp;
             inDegree[j]++;
         }
-        public void printStages()
+        public void printStages() //print stages by the shortest possible order
         {
          
             int[] stage_list = new int[n];
@@ -33,7 +33,7 @@ namespace HW2
 
             int flag = 0;
 
-            for(int i=0; i<this.n;i++)
+            for(int i=0; i<this.n;i++) //check which tasks can be done first
             {
                 if (inDegree[i]==0)
                 {
@@ -43,7 +43,7 @@ namespace HW2
                 }
             }
             int count = 1;
-            while (flag == 1)
+            while (flag == 1) //while there are more tasks that can be done
             {
                 flag = 0;
                 Console.Out.WriteLine("stage {0}:",count++);
@@ -73,7 +73,7 @@ namespace HW2
             }
             
         }
-       virtual protected void show_assignment(int i)
+       virtual protected void show_assignment(int i) //print task by its numebr
         {
             Console.Out.WriteLine(i);
             
