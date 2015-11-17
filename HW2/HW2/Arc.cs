@@ -12,5 +12,5 @@ namespace HW2
         public Arc next;
 
     } // Arc
-
+    
 }

@@ -5,26 +5,33 @@ using System.Text;
 
 namespace HW2
 {
-    class Courses
+    class Courses : Pert
     {
         private int n;
-
-        public Courses(int n)
+        private string []name;
+      
+        public Courses(int n) : base(n)
         {
-            // TODO: Complete member initialization
             this.n = n;
+            name = new string[n];
         }
 
-        internal void addCourse(string p)
+       public void addCourse(string str)
         {
-            throw new NotImplementedException();
+            this.name[--n] = str;
         }
 
-        internal void prerequisite(string p1, string p2)
+       public void prerequisite(string str1, string str2)
         {
-            throw new NotImplementedException();
+            int i = Array.IndexOf(name, str1);
+            int j = Array.IndexOf(name, str2);
+            base.prerequisite(i, j);
         }
 
+       override protected void show_assignment(int i)
+        {
+            Console.Out.WriteLine(name[i]);
+        }
 
     }
 }

@@ -27,6 +27,7 @@ namespace HW2
         }
         public void printStages()
         {
+         
             int[] stage_list = new int[n];
             int[] new_stage_list = new int[n]; 
 
@@ -41,22 +42,26 @@ namespace HW2
                     
                 }
             }
+            int count = 1;
             while (flag == 1)
             {
                 flag = 0;
+                Console.Out.WriteLine("stage {0}:",count++);
                 for (int i = 0; i < this.n; i++)
                 {
+                   
                     if (stage_list[i] > 0)
                     {
-                        Console.Out.Write(i + " ");
-                        while (arcArr[i] != null)
+                        show_assignment(i);
+                        Arc temp1 = arcArr[i];
+                        while (temp1 != null)
                         {
-                            if ((--inDegree[arcArr[i].j]) == 0)
+                            if ((--inDegree[temp1.j]) == 0)
                             {
-                                new_stage_list[arcArr[i].j]++;
+                                new_stage_list[temp1.j]++;
                                 flag = 1;
                             }
-
+                            temp1 = temp1.next;
                         }
                         stage_list[i] = 0;
                     }
@@ -64,7 +69,16 @@ namespace HW2
                 int[] temp = stage_list;
                 stage_list = new_stage_list;
                 new_stage_list = temp;
+                Console.Out.WriteLine();
             }
+            
+        }
+       virtual protected void show_assignment(int i)
+        {
+            Console.Out.WriteLine(i);
+            
         }
     }
+
+  
 }
