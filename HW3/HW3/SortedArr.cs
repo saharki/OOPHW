@@ -2,58 +2,70 @@
 
 namespace HW3
 {
-    class SortedArr<T>
+    class SortedArr<Type>
     {
         private Func<object, object, bool> isEqual;
         private Func<object, object, bool> isGreater;
-        private Type[] arr;
-        private int indexer=0;
-       private const int arrSize = 8;
+        private object[] arr;
+        protected int indexer=0;
         public SortedArr(Func<object, object, bool> isGreater, Func<object, object, bool> isEqual)
         {
             this.isGreater = isGreater;
             this.isEqual = isEqual;
-            arr = new Type[arrSize];
         }
 
         public void add(Type v)
         {
-            if (indexer >= 8)
+ 
+            indexer++;
+            object []tmp= new object[indexer];
+           
+
+            //object tmp = null, tmp2 = null;
+
+            if (indexer == 1)
             {
+                tmp[0] = v;
+                arr = tmp;
                 return;
             }
-            int foundplace = 0;
-            Type tmp = null,tmp2=null;
-            for (int i = 0; i < indexer; i++)
+            bool placed = false;
+            int i = 0;
+            while (!placed)
             {
-                if (isGreater(arr[i],v ) && (tmp==null))
+               
+                if (i<indexer-1 && isGreater((object)v,arr[i]))
                 {
-                    tmp = arr[i];
-                    arr[i] = v;
+                    tmp[i] = arr[i];
                 }
-                else if (tmp!=null)
+                else
                 {
-                    tmp2 = tmp;
-                    tmp = arr[i];
-                    arr[i] = tmp2;
-
+                    tmp[i] = v;
+                    placed = true;
                 }
+                i++;
             }
-
-            indexer++;
+            while (i < indexer)
+            {
+                tmp[i] = arr[i - 1];
+                i++;
+            }
+        
+            arr = tmp;
+            
            
         }
 
         public bool delete(Type v)
         {
-            if (indexer ==0)
+            if (indexer <=0)
             {
                 return false;
             }
             int found=0;
             for (int i=0 ;i<indexer;i++)
             {
-                if (isEqual(arr[i],v)&&(found==0))
+                if (isEqual(arr[i],(object) v)&&(found==0))
                 {
                     found = 1;
                 }
@@ -68,15 +80,19 @@ namespace HW3
       
 
             indexer--;
+            object[] tmp = new object[indexer];
+            for (int i = 0; i < indexer; i++)
+                tmp[i] = arr[i];
+            arr = tmp;
             return true;  
           
         }
 
         public Type Geti(int i)
         {
-            return arr[i];
+            return (Type)arr[i];
         }
 
-        public int N { get { return arrSize; } }
+        public int N { get { return indexer; } }
     }
 }

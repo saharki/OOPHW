@@ -2,25 +2,24 @@
 
 namespace HW3
 {
-    internal class Priority<T>
+    internal class Priority<Type> : SortedArr<Type>
     {
-        private Func<object, object, bool> intIsEqual;
-        private Func<object, object, bool> intIsGreater;
 
-        public Priority(Func<object, object, bool> intIsGreater, Func<object, object, bool> intIsEqual)
+
+        public Priority(Func<object, object, bool> isGreater, Func<object, object, bool> isEqual) : base(isGreater,isEqual)
         {
-            this.intIsGreater = intIsGreater;
-            this.intIsEqual = intIsEqual;
+
+       
         }
 
-        internal void add(int v)
-        {
-            throw new NotImplementedException();
-        }
+        public Type removeMax()
+        { 
+          //  if (indexer <=0)
+          //    return (Type)null;
+            object temp = Geti(indexer - 1);
 
-        internal bool removeMax()
-        {
-            throw new NotImplementedException();
+           base.delete((Type) temp);
+            return (Type)temp;
         }
     }
 }
