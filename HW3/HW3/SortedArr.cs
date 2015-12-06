@@ -22,18 +22,20 @@ namespace HW3
             {
                 return;
             }
+            int foundplace = 0;
             Type tmp = null,tmp2=null;
             for (int i = 0; i < indexer; i++)
             {
-                if (isGreater(v,arr[i]))
+                if (isGreater(arr[i],v ) && (tmp==null))
                 {
                     tmp = arr[i];
                     arr[i] = v;
                 }
                 else if (tmp!=null)
                 {
-                    tmp2 = arr[i];
-                    arr[i] = tmp;
+                    tmp2 = tmp;
+                    tmp = arr[i];
+                    arr[i] = tmp2;
 
                 }
             }
