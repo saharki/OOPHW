@@ -1,6 +1,7 @@
 #include <iostream>
+#include "mystack.h"
 using namespace std;
-
+using namespace ms;
 int main()
 {
 	float f;

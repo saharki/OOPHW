@@ -23,6 +23,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mystack.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mystack.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BE2B5A9B-74D6-4096-A5CD-502B0BD81A2F}</ProjectGuid>
