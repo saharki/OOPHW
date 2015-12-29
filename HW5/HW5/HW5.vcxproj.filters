@@ -20,6 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\Downloads\ooptarg516a.docx" />
+    <None Include="..\ooptarg516a.docx" />
   </ItemGroup>
 </Project>
