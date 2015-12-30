@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include "SortedArr.h"
 using namespace std;
@@ -5,14 +6,14 @@ using namespace HW5;
 
 
 	template <class type>
-	SortedArr::SortedArr(bool(*isGreater)(void *, void *), bool(*isEqual)(void *, void *))// constructor
+	SortedArr<type>::SortedArr(bool(*isGreater)(void *, void *), bool(*isEqual)(void *, void *))// constructor
 	{
 		this.isGreater = isGreater;
 		this.isEqual = isEqual;
 	}
 
 	template <class type>
-	SortedArr::~SortedArr()// destructor
+	SortedArr<type>::~SortedArr()// destructor
 	{
 		for (int i; i < indexer; i++)
 		{
@@ -22,7 +23,7 @@ using namespace HW5;
 	}
 
 	template <class type>
-	void SortedArr::add(type v) // add v to the queue
+	void SortedArr<type>::add(type v) // add v to the queue
 	{
 
 		indexer++;
@@ -68,7 +69,7 @@ using namespace HW5;
 
 
 	template <class type>
-	bool SortedArr::delete_member(type v)  // delete v from the queue
+	bool SortedArr<type>::delete_member(type v)  // delete v from the queue
 	{
 		if (indexer <= 0)
 		{
@@ -88,13 +89,13 @@ using namespace HW5;
 
 			}
 		}
-
+		 
 		if (found == 0)
 			return false;
 		
 
 		indexer--;
-		(void*)[] tmp = new (void*)[indexer];
+		type ** tmp = new type* [indexer];
 		for (int i = 0; i < indexer; i++)
 		tmp[i] = arr[i];
 		delete []arr;
@@ -104,12 +105,14 @@ using namespace HW5;
 	}
 
 
+
+
 	template <class type>
-	SortedArr::type Geti(int i) // return the value of index i from the queue
+	type SortedArr<type>::Geti(int i) // return the value of index i from the queue
 	{
 		return (type)arr[i];
 	}
 
 	template <class type>
-	int SortedArr::getN() { return indexer; } // getter for size
-
+	int SortedArr<type>::getN() { return indexer; } // getter for size
+	*/
