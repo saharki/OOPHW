@@ -4,24 +4,22 @@ namespace HW3
 {
     class SortedArr<Type>
     {
-        private Func<object, object, bool> isEqual;
+        private Func<object, object, bool> isEqual; 
         private Func<object, object, bool> isGreater;
-        private object[] arr;
+        private object[] arr;  // our queue
         protected int indexer=0;
-        public SortedArr(Func<object, object, bool> isGreater, Func<object, object, bool> isEqual)
+        public SortedArr(Func<object, object, bool> isGreater, Func<object, object, bool> isEqual) // constructor
         {
             this.isGreater = isGreater;
             this.isEqual = isEqual;
         }
 
-        public void add(Type v)
+        public void add(Type v) // add v to the queue
         {
  
             indexer++;
             object []tmp= new object[indexer];
            
-
-            //object tmp = null, tmp2 = null;
 
             if (indexer == 1)
             {
@@ -56,7 +54,7 @@ namespace HW3
            
         }
 
-        public bool delete(Type v)
+        public bool delete(Type v)  // delete v from the queue
         {
             if (indexer <=0)
             {
@@ -88,7 +86,7 @@ namespace HW3
           
         }
 
-        public Type Geti(int i)
+        public Type Geti(int i) // return the value of index i from the queue
         {
             return (Type)arr[i];
         }

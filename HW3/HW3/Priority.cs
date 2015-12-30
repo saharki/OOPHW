@@ -6,16 +6,15 @@ namespace HW3
     {
 
 
-        public Priority(Func<object, object, bool> isGreater, Func<object, object, bool> isEqual) : base(isGreater,isEqual)
+        public Priority(Func<object, object, bool> isGreater, Func<object, object, bool> isEqual) : base(isGreater,isEqual) // runs the father constructor
         {
 
        
         }
 
-        public Type removeMax()
+        public Type removeMax() //remove the max 
         { 
-          //  if (indexer <=0)
-          //    return (Type)null;
+
             object temp = Geti(indexer - 1);
 
            base.delete((Type) temp);
