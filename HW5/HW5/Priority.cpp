@@ -1,4 +1,4 @@
-
+/*
 namespace HW3
 {
 	internal class Priority<Type> : SortedArr<Type>
@@ -9,7 +9,7 @@ namespace HW3
 		{
 
 
-		}
+		} 
 
 		public Type removeMax() //remove the max 
 		{
@@ -20,4 +20,4 @@ namespace HW3
 			return (Type)temp;
 		}
 	}
-}
+}*/
