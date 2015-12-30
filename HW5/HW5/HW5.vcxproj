@@ -147,9 +147,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Priority.cpp" />
+    <ClCompile Include="SortedArr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\ooptarg516a.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SortedArr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
