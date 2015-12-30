@@ -6,13 +6,13 @@ bool doubleIsGreater(void *x, void *y)
 {
 	double *u, *v;
 
-	u = (double *)x;
+	u = (double *)x; 
 	v = (double *)y;
 
 	return (*u > *v);
 }// doubleIsGreater 
 
-bool doubleIsEqual(void *x, void *y)
+bool doubleIsEqual(void *x, void *y)  
 {
 	double *u, *v;
 
