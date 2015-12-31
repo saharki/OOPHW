@@ -9,11 +9,11 @@ namespace HW5
 
 		}
 
-		inline void add(type v)
+		void add(type v)
 		{
 			SortedArr<type>::add(v);
 		}
-		inline int getN()
+		int getN()
 		{
 			return SortedArr<type>::getN();
 		}
@@ -21,7 +21,7 @@ namespace HW5
 
 
 
-		inline type removeMax()
+		type removeMax()
 		{
 			type temp = Geti(indexer - 1);
 			SortedArr<type>::delete_member(temp);
