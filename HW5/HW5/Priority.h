@@ -2,7 +2,7 @@
 namespace HW5
 {
 	template <class type>
-	class Priority : SortedArr<type>
+	class Priority : SortedArr < type >
 	{
 
 	public:
@@ -12,31 +12,25 @@ namespace HW5
 		void add(type v);
 		int getN();
 		type removeMax();
-
 	};
-
 	template <class type>
-	inline Priority(bool(*isGreater)(void *, void *), bool(*isEqual)(void *, void *)) : base(isGreater, isEqual) // runs the father constructor
+	inline Priority<type>::Priority(bool(*isGreater)(void *, void *), bool(*isEqual)(void *, void *)) : base(isGreater, isEqual) // runs the father constructor
 	{
 	}
 
 	template <class type>
-	inline ~Priority()
+	inline Priority<type>::~Priority()
 	{
 		~base();
 	}
 
 	template <class type>
-	inline type removeMax() //remove the max 
+	inline type Priority<type>::removeMax() //remove the max 
 	{
 		type temp = Geti(indexer - 1);
 
 		base.delete_member(temp);
 		return temp;
 	}
-	template<class type>
-	inline type Priority<type>::removeMax()
-	{
-		return type();
-	}
+
 };
