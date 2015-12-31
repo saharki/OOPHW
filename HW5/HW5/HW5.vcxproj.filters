@@ -32,5 +32,8 @@
     <ClInclude Include="Priority.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Prio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

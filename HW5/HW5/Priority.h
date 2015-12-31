@@ -2,19 +2,21 @@
 namespace HW5
 {
 	template <class type>
-	class Priority : SortedArr < type >
+	class Priority : SortedArr<type> 
 	{
 
 	public:
 
-		Priority(bool(*isGreater)(void *, void *), bool(*isEqual)(void *, void *)) : base(isGreater, isEqual); // runs the father constructor	
+		Priority(bool(*iG)(void *, void*), bool (*iE)(void *, void *)) : SortedArr<type>(iG, iE);
 		~Priority();
 		void add(type v);
 		int getN();
 		type removeMax();
 	};
-	template <class type>
-	inline Priority<type>::Priority(bool(*isGreater)(void *, void *), bool(*isEqual)(void *, void *)) : base(isGreater, isEqual) // runs the father constructor
+
+
+	template<class type>
+	inline Priority<type>::Priority(bool(*iG)(void *, void *), bool(*iE)(void *, void *)): SortedArr<type>(iG, iE)
 	{
 	}
 
@@ -29,7 +31,7 @@ namespace HW5
 	{
 		type temp = Geti(indexer - 1);
 
-		base.delete_member(temp);
+		SortedArr<type>::delete_member(temp);
 		return temp;
 	}
 
