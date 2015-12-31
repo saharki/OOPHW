@@ -147,7 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Priority.cpp" />
+    <ClCompile Include="Priority.h" />
     <ClCompile Include="SortedArr.cpp" />
   </ItemGroup>
   <ItemGroup>

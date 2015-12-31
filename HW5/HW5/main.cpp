@@ -1,4 +1,5 @@
 #include "SortedArr.h"
+#include "Priority.h"
 #include <iostream>
 using namespace std;
 using namespace HW5;
@@ -60,7 +61,7 @@ int main(int argc, char *argv[])
 	cout << "\nsrt1:\n";
 	for (i = 0; i < srt1.getN(); i++)
 		cout << srt1.Geti(i) << endl;
-	/*
+	
 	Priority<int> pri1(intIsGreater, intIsEqual);
 	pri1.add(11);
 	pri1.add(33);
@@ -74,5 +75,5 @@ int main(int argc, char *argv[])
 	while (pri1.getN() > 0)
 		cout << pri1.removeMax() << endl;
 
-*/
+
 } // main
