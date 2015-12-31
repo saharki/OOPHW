@@ -26,13 +26,10 @@
     <None Include="..\ooptarg516a.docx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SortedArr.h">
+    <ClInclude Include="SortedArr.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Priority.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Prio.h">
+    <ClInclude Include="Prio.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

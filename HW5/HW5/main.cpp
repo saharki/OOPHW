@@ -1,5 +1,5 @@
-#include "SortedArr.h"
-#include "Prio.h"
+#include "SortedArr.hpp"
+#include "Prio.hpp"
 #include <iostream>
 using namespace std;
 using namespace HW5;

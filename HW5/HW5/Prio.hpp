@@ -8,10 +8,10 @@ namespace HW5
 		{
 
 		}
-
+		 
 		void add(type v)
 		{
-			SortedArr<type>::add(v);
+			SortedArr<type>::add(v); 
 		}
 		int getN()
 		{

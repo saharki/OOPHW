@@ -6,7 +6,7 @@ namespace HW5
 	class SortedArr {
 
 
-	private:
+	private:  
 
 		bool(*isEqual) (void *, void *);
 		bool(*isGreater) (void *, void *);

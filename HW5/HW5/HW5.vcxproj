@@ -153,9 +153,8 @@
     <None Include="..\ooptarg516a.docx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Prio.h" />
-    <ClInclude Include="Priority.h" />
-    <ClInclude Include="SortedArr.h" />
+    <ClInclude Include="Prio.hpp" />
+    <ClInclude Include="SortedArr.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
