@@ -6,7 +6,7 @@ namespace HW5
 	class SortedArr {
 
 
-	private:  
+	private:
 
 		bool(*isEqual) (void *, void *);
 		bool(*isGreater) (void *, void *);
@@ -15,16 +15,7 @@ namespace HW5
 		int indexer = 0;
 	public:
 
-
-
-
-
-
-
-
-
-
-		SortedArr(bool(*isGreaterr)(void *, void *), bool(*isEquall)(void *, void *))
+		SortedArr(bool(*isGreaterr)(void *, void *), bool(*isEquall)(void *, void *)) //constructor
 		{
 			isGreater = isGreaterr;
 			isEqual = isEquall;
@@ -41,7 +32,7 @@ namespace HW5
 		}
 
 
-		void add(type v)
+		void add(type v) // add an element to array + increase array size by 1
 		{
 			indexer++;
 			type**tmp = new type*[indexer];
@@ -83,7 +74,7 @@ namespace HW5
 		}
 
 
-		bool delete_member(type v)
+		bool delete_member(type v) // remove element v from array and decrease array size by 1
 		{
 			if (indexer <= 0)
 			{
@@ -118,13 +109,13 @@ namespace HW5
 		}
 
 
-		type Geti(int i)
+		type Geti(int i) //get the i-th element in array
 		{
 			return *((type*)arr[i]);
 		}
 
 
-		int getN()
+		int getN() //get array size
 		{
 			return indexer;
 		}
