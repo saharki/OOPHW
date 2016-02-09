@@ -12,7 +12,9 @@ namespace _13_7_2014_1_sahar
         {
             int i, n;
             n = 10;
-
+            /***************************************************************
+            **** Doesn't work, problem with ron's algorithm of "add" func ****
+            ****************************************************************/
             ditree mytree = new ditree();
             for (i = 1; i <= n; i++)
                 mytree.add(1.1 * i);
