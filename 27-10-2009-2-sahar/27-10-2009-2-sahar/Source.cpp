@@ -65,7 +65,7 @@ class polynom_analyzer
 		double sum=0;
 		for(int i=0;i<=n;i++)
 		{
-			sum=t*arr[i];
+			sum+=t*arr[i];
 			t*=x;
 		}
 		return sum;
