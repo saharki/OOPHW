@@ -9,6 +9,7 @@ public:
 	virtual void print_line(int i) = 0;
 	virtual void print_screen() = 0;
 };
+
 class sparce_screen :screen
 {
 
@@ -78,8 +79,13 @@ public:
 			return;
 		if (parr[line_no] == NULL)
 			delete [] parr[line_no];
-		parr[line_no] = new char[strlen(str)+1];
-		strcpy(parr[line_no], str);
+		if (str == NULL)
+			parr[line_no] = NULL;
+		else
+		{
+			parr[line_no] = new char[strlen(str) + 1];
+			strcpy(parr[line_no], str);
+		}
 
 	}
 	void print_line(int i)
@@ -100,6 +106,33 @@ public:
 	}
 };
 
+typedef class one_line_screen : public sparce_screen
+{
+private:
+	int nonblank_index;
+
+public:
+	one_line_screen() :sparce_screen()
+	{
+		nonblank_index = -1;
+	} // one_line_screen
+
+	void change_line(int line_no, char str[])
+	{
+
+		if ((nonblank_index != -1) && (nonblank_index != line_no))
+		{
+			sparce_screen::change_line(nonblank_index, NULL);
+		} // if 
+
+		sparce_screen::change_line(line_no, str);
+		nonblank_index = line_no;
+	} // change_line
+
+
+} ONE_LINE;
+
+
 
 
 void dolittle(sparce_screen dummy)
@@ -111,7 +144,7 @@ int main()
 {
 	int x;
 	sparce_screen spsc1, spsc2;
-	//one_line_screen olsc1;
+	one_line_screen olsc1;
 
 	spsc1.change_line(10, "Screen 1");
 	spsc1.change_line(15, "Screen 1");
@@ -124,13 +157,13 @@ int main()
 	spsc2.print_screen();
 	spsc1.change_line(10, "Screen 1");
 	spsc1.change_line(15, "Screen 1");
-	/*
+	
 	olsc1.change_line(8, "One Line screen 1");
 	olsc1.change_line(5, "One Line screen 2");
 	olsc1.change_line(15, "One Line screen 3");
 
 	olsc1.print_screen();
-	*/
+	
 } // main
 
 
